@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7C992E42-3653-4EFE-9DDD-CB0CB7DE7832}</ProjectGuid>
+    <ProjectGuid>{52316076-C759-4E34-BA3F-6BF6A0D5CB43}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProjectManager.Logic</RootNamespace>
-    <AssemblyName>ProjectManager.Logic</AssemblyName>
+    <RootNamespace>ProjectManager.BusinessObjects</RootNamespace>
+    <AssemblyName>ProjectManager.BusinessObjects</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,15 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,23 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IUserManager.cs" />
-    <Compile Include="Mapping\UserMaps.cs" />
-    <Compile Include="UserManager.cs" />
+    <Compile Include="BaseModel.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProjectManager.BusinessObjects\ProjectManager.BusinessObjects.csproj">
-      <Project>{52316076-c759-4e34-ba3f-6bf6a0d5cb43}</Project>
-      <Name>ProjectManager.BusinessObjects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProjectManager.DataAccess\ProjectManager.DataAccess.csproj">
-      <Project>{DEE77CAE-FAB7-4B53-90FD-E8CCD8E2BBC4}</Project>
-      <Name>ProjectManager.DataAccess</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
