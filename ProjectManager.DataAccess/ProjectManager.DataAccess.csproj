@@ -87,7 +87,9 @@
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <EntityDeploy Include="Entity\ProjectManager.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProjectManager.Designer.cs</LastGenOutput>

@@ -15,15 +15,15 @@ namespace ProjectManager.Logic
     {
         public readonly IRepository<DataAccess.Entity.User> _userRepository;
         private readonly IMapper _mapper;
-        public UserManager(IRepository<DataAccess.Entity.User> userRepository, IMapper mapper)
+        public UserManager(IRepository<DataAccess.Entity.User> userRepository)//, IMapper mapper)
         {
             _userRepository = userRepository;
-            _mapper = mapper;
+            //_mapper = mapper;
         }
                 
-        public void DeleteUser(int userId)
+        public int DeleteUser(int userId)
         {
-            _userRepository.Delete(userId);
+            return _userRepository.Delete(userId);
         }
 
         public BusinessObjects.User GetUserById(int userId)
@@ -35,7 +35,16 @@ namespace ProjectManager.Logic
         public IEnumerable<BusinessObjects.User> GetUsers()
         {
             var result = _userRepository.Get();
-            return _mapper.Map<IEnumerable<BusinessObjects.User>>(result);
+            var users = new List<BusinessObjects.User>();
+            result.ToList().ForEach(u => users.Add(new BusinessObjects.User
+            {
+                UserId = u.User_Id,
+                FirstName = u.First_Name,
+                LastName = u.Last_Name,
+                EmployeeId = u.Employee_Id
+            }));
+            // return _mapper.Map<IEnumerable<BusinessObjects.User>>(result);
+            return users;
         }
 
         public BusinessObjects.User SaveUser(BusinessObjects.User user)
@@ -44,8 +53,8 @@ namespace ProjectManager.Logic
             DataAccess.Entity.User entity = request.User_Id == 0 ?
                 _userRepository.Create(request) : _userRepository.Update(request);
             var result = _mapper.Map<BusinessObjects.User>(entity);
-            result.Status = true;
-            result.StatusMessage = request.User_Id == 0 ? "User added successfully!" : "User updated successfully!";
+            //result.Status = true;
+            //result.StatusMessage = request.User_Id == 0 ? "User added successfully!" : "User updated successfully!";
             return result;
         }
         

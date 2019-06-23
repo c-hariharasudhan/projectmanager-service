@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManager.BusinessObjects
 {
-    public class User : BaseModel
+    public class User //: BaseModel
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }

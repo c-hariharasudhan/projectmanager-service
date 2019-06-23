@@ -12,6 +12,6 @@ namespace ProjectManager.Logic.Interfaces
         IEnumerable<User> GetUsers();
         User GetUserById(int userId);
         User SaveUser(User user);
-        void DeleteUser(int userId);
+        int DeleteUser(int userId);
     }
 }

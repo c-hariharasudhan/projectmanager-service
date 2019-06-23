@@ -7,7 +7,7 @@ namespace ProjectManager.DataAccess.Repository
         T GetById(int id);
         T Create(T objectToCreate);
         T Update(T objectToUpdate);
-        void Delete(int id);
+        int Delete(int id);
         IEnumerable<T> Get();
 
     }

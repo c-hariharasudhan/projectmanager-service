@@ -26,11 +26,11 @@ namespace ProjectManager.DataAccess.Repository
             return objectToCreate;
         }
 
-        public void Delete(int id)
+        public int Delete(int id)
         {
             var objectToDelete = Entity.Find(id);
             _dbContext.Entry(objectToDelete).State = EntityState.Deleted;
-            _dbContext.SaveChanges();
+            return _dbContext.SaveChanges();
         }
 
         public IEnumerable<T> Get()
