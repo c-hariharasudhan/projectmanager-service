@@ -57,6 +57,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -285,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="logs\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +314,10 @@
     <ProjectReference Include="..\ProjectManager.DataAccess\ProjectManager.DataAccess.csproj">
       <Project>{DEE77CAE-FAB7-4B53-90FD-E8CCD8E2BBC4}</Project>
       <Name>ProjectManager.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectManager.Infrastructure\ProjectManager.Infrastructure.csproj">
+      <Project>{8AEED007-3410-4634-A81B-DE3B56A95639}</Project>
+      <Name>ProjectManager.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProjectManager.Logic\ProjectManager.Logic.csproj">
       <Project>{7C992E42-3653-4EFE-9DDD-CB0CB7DE7832}</Project>

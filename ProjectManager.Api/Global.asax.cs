@@ -22,6 +22,8 @@ namespace ProjectManager.Api
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            // Initialize log4net.
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         [Conditional("DEBUG")]

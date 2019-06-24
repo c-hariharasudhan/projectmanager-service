@@ -21,7 +21,7 @@ namespace ProjectManager.Logic
         }
         public int DeleteProject(int projectId)
         {
-            throw new NotImplementedException();
+            return _projectRepository.Delete(projectId);
         }
 
         public Project GetProjectById(int projectId)

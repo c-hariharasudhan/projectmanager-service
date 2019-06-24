@@ -1,0 +1,18 @@
+﻿using ProjectManager.BusinessObjects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProjectManager.Logic.Interfaces
+{
+    public interface ITaskManager
+    {
+        IEnumerable<BusinessObjects.Task> GetTasksByProject(int projectId);
+        BusinessObjects.Task SaveProject(BusinessObjects.Task task);
+        int DeleteProject(int taskId);
+        IEnumerable<ParentTask> GetParentTasks();
+        ParentTask InsertParentTask(ParentTask parentTask);
+    }
+}

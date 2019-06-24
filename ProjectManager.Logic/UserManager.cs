@@ -8,6 +8,7 @@ using ProjectManager.DataAccess.Entity;
 using ProjectManager.Logic.Interfaces;
 using ProjectManager.BusinessObjects;
 using AutoMapper;
+using ProjectManager.Infrastructure.Logging;
 
 namespace ProjectManager.Logic
 {
@@ -15,10 +16,12 @@ namespace ProjectManager.Logic
     {
         public readonly IRepository<DataAccess.Entity.User> _userRepository;
         private readonly IMapper _mapper;
-        public UserManager(IRepository<DataAccess.Entity.User> userRepository)//, IMapper mapper)
+        private readonly ILogger _logger;
+        public UserManager(IRepository<DataAccess.Entity.User> userRepository, IMapper mapper, ILogger logger)
         {
             _userRepository = userRepository;
-            //_mapper = mapper;
+            _mapper = mapper;
+            _logger = logger;
         }
                 
         public int DeleteUser(int userId)
@@ -33,18 +36,10 @@ namespace ProjectManager.Logic
         }
 
         public IEnumerable<BusinessObjects.User> GetUsers()
-        {
+        {            
             var result = _userRepository.Get();
-            var users = new List<BusinessObjects.User>();
-            result.ToList().ForEach(u => users.Add(new BusinessObjects.User
-            {
-                UserId = u.User_Id,
-                FirstName = u.First_Name,
-                LastName = u.Last_Name,
-                EmployeeId = u.Employee_Id
-            }));
-            // return _mapper.Map<IEnumerable<BusinessObjects.User>>(result);
-            return users;
+            _logger.WriteMessage(GetType(), LogLevel.Info, string.Format("Total users : {0}", result.Count()));
+            return _mapper.Map<IEnumerable<BusinessObjects.User>>(result);
         }
 
         public BusinessObjects.User SaveUser(BusinessObjects.User user)

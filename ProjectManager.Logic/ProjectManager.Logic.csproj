@@ -54,10 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ITaskManager.cs" />
     <Compile Include="Interfaces\IProjectManager.cs" />
     <Compile Include="Interfaces\IUserManager.cs" />
+    <Compile Include="Mapping\ProjectMaps.cs" />
+    <Compile Include="Mapping\TaskMaps.cs" />
     <Compile Include="Mapping\UserMaps.cs" />
     <Compile Include="ProjectManager.cs" />
+    <Compile Include="TaskManager.cs" />
     <Compile Include="UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +73,10 @@
     <ProjectReference Include="..\ProjectManager.DataAccess\ProjectManager.DataAccess.csproj">
       <Project>{DEE77CAE-FAB7-4B53-90FD-E8CCD8E2BBC4}</Project>
       <Name>ProjectManager.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectManager.Infrastructure\ProjectManager.Infrastructure.csproj">
+      <Project>{8AEED007-3410-4634-A81B-DE3B56A95639}</Project>
+      <Name>ProjectManager.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
