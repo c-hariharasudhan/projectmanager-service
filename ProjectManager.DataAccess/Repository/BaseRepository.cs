@@ -17,7 +17,7 @@ namespace ProjectManager.DataAccess.Repository
             _entity = _dbContext.Set<T>();
         }
        
-        public DbSet<T> Entity { get => _entity;}
+        public DbSet<T> Entity { get { return _entity; } }
 
         public T Create(T objectToCreate)
         {
