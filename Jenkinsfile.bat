@@ -8,7 +8,7 @@
  SET OpenCoverPath=%FolderPath%\packages\OpenCover.4.7.922\tools
  SET ReportGeneratorPath=%FolderPath%\packages\ReportGenerator.2.5.10\tools
  
- SET UnitTestProj=%FolderPath%\ProjectManager.Logic.Tests\ProjectManager.Logic.Tests.csproj
+ SET UnitTestProj=%FolderPath%\ProjectManager.Logic.Tests\bin\Release\ProjectManager.Logic.Tests.dll
  
  REM Recreate Results Folder
  rd /S /Q %ResultsPath%
