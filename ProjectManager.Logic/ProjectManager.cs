@@ -13,10 +13,12 @@ namespace ProjectManager.Logic
     public class ProjectManager : IProjectManager
     {
         private readonly IRepository<DataAccess.Entity.Project> _projectRepository;
+        private readonly IRepository<DataAccess.Entity.User> _userRepository;
         private readonly IMapper _mapper;
-        public ProjectManager(IRepository<DataAccess.Entity.Project> projectRepository, IMapper mapper)
+        public ProjectManager(IRepository<DataAccess.Entity.Project> projectRepository, IMapper mapper, IRepository<DataAccess.Entity.User> userRepository)
         {
             _projectRepository = projectRepository;
+            _userRepository = userRepository;
             _mapper = mapper;
         }
         public int DeleteProject(int projectId)

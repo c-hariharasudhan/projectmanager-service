@@ -25,7 +25,12 @@ namespace ProjectManager.Logic.Mapping
                 .ForMember(bo => bo.ProjectName, options => options.MapFrom(entity => entity.Project_Name))
                 .ForMember(bo => bo.StartDate, options => options.MapFrom(entity => entity.Start_Date))
                 .ForMember(bo => bo.EndDate, options => options.MapFrom(entity => entity.End_Date))
-                .ForMember(bo => bo.Priority, options => options.MapFrom(entity => entity.Priority));
+                .ForMember(bo => bo.Priority, options => options.MapFrom(entity => entity.Priority))
+                .ForMember(bo => bo.NoOfTasks, options => options.MapFrom(entity => entity.Tasks.Count()))
+                .ForMember(bo => bo.NoOfCompletedTasks, options => options.MapFrom(entity => entity.Tasks.Count(t => t.Status == false)))
+                .ForMember(bo => bo.User, options => options.MapFrom(entity => entity.Users.FirstOrDefault(u => u.Project_Id == entity.Project_Id)));
+
+
         }
     }
 }
