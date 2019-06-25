@@ -18,7 +18,7 @@ namespace ProjectManager.Logic.Mapping
                 .ForMember(bo => bo.EndDate, options => options.MapFrom(entity => entity.End_Date))
                 .ForMember(bo => bo.Priority, options => options.MapFrom(entity => entity.Priority))
                 .ForMember(bo => bo.IsActive, options => options.MapFrom(entity => entity.Status))
-                .ForMember(bo => bo.ParentTaskId, options => options.MapFrom(entity => entity.ParentTask == null ? 0 : entity.ParentTask.Parent_Id))
+                .ForMember(bo => bo.ParentId, options => options.MapFrom(entity => entity.ParentTask == null ? 0 : entity.ParentTask.Parent_Id))
                 .ForMember(bo => bo.ParentTaskName, options => options.MapFrom(entity => entity.ParentTask == null ? "" : entity.ParentTask.Parent_Task))
                 .ForMember(bo => bo.ProjectId, options => options.MapFrom(entity => entity.Project_Id))
                 .ForMember(bo => bo.User, options => options.Ignore());
@@ -29,7 +29,7 @@ namespace ProjectManager.Logic.Mapping
                 .ForMember(entity => entity.End_Date, options => options.MapFrom(bo => bo.EndDate))
                 .ForMember(entity => entity.Priority, options => options.MapFrom(bo => bo.Priority))
                 .ForMember(entity => entity.Status, options => options.MapFrom(bo => bo.IsActive))
-                .ForMember(entity => entity.Parent_Id, options => options.MapFrom(bo => bo.ParentTaskId))
+                .ForMember(entity => entity.Parent_Id, options => options.MapFrom(bo => bo.ParentId))
                 .ForMember(entity => entity.Project_Id, options => options.MapFrom(bo => bo.ProjectId));
 
             CreateMap<DataAccess.Entity.ParentTask, BusinessObjects.ParentTask>()

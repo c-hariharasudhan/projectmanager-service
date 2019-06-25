@@ -14,7 +14,7 @@ namespace ProjectManager.BusinessObjects
         public DateTime? EndDate { get; set; }
         public int Priority { get; set; }
         public int ProjectId { get; set; }
-        public int ParentTaskId { get; set; }
+        public int ParentId { get; set; }
         public string ParentTaskName { get; set; }
         public User User { get; set; }
         public bool IsActive { get; set; }
