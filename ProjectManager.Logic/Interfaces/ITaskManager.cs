@@ -10,8 +10,8 @@ namespace ProjectManager.Logic.Interfaces
     public interface ITaskManager
     {
         IEnumerable<BusinessObjects.Task> GetTasksByProject(int projectId);
-        BusinessObjects.Task SaveProject(BusinessObjects.Task task);
-        int DeleteProject(int taskId);
+        BusinessObjects.Task SaveTask(BusinessObjects.Task task);
+        int DeleteTask(int taskId);
         IEnumerable<ParentTask> GetParentTasks();
         ParentTask InsertParentTask(ParentTask parentTask);
     }

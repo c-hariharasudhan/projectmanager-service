@@ -28,6 +28,11 @@ namespace ProjectManager.Api.Controllers
         [Route("api/user/save")]
         public JsonResponse Save(User user)
         {
+            if (!ModelState.IsValid)
+            { // re-render the view when validation failed.
+              // return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                return new JsonResponse { Status = Constants.STATUS_ERROR, Message = "Input values / format not valid!" };
+            }
             return new JsonResponse { Data = _userManager.SaveUser(user) };
         }
 

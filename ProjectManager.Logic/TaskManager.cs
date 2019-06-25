@@ -21,7 +21,7 @@ namespace ProjectManager.Logic
             _parentTaskRepository = parentTaskRepository;
             _mapper = mapper;
         }
-        public int DeleteProject(int taskId)
+        public int DeleteTask(int taskId)
         {
             return _taskRepository.Delete(taskId);
         }
@@ -47,7 +47,7 @@ namespace ProjectManager.Logic
 
         }
 
-        public BusinessObjects.Task SaveProject(BusinessObjects.Task task)
+        public BusinessObjects.Task SaveTask(BusinessObjects.Task task)
         {
             var entity = _mapper.Map<DataAccess.Entity.Task>(task);
             var result = task.TaskId == 0 ? _taskRepository.Create(entity) : _taskRepository.Update(entity);
