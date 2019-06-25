@@ -59,6 +59,9 @@ namespace ProjectManager.Api
         private static void ManualRegistrations(IUnityContainer container)
         {
             container.RegisterType(typeof(IRepository<DataAccess.Entity.User>), typeof(UserRepository));
+            container.RegisterType(typeof(IRepository<DataAccess.Entity.Project>), typeof(ProjectRepository));
+            container.RegisterType(typeof(IRepository<DataAccess.Entity.Task>), typeof(TaskRepository));
+            container.RegisterType(typeof(IRepository<DataAccess.Entity.ParentTask>), typeof(ParentTaskRepository));
         }
 
         private static List<Assembly> GetAssembliesToScan()

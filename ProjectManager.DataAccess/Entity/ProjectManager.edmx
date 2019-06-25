@@ -9,14 +9,14 @@
           <Key>
             <PropertyRef Name="Parent_Id" />
           </Key>
-          <Property Name="Parent_Id" Type="int" Nullable="false" />
+          <Property Name="Parent_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Parent_Task" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
             <PropertyRef Name="Project_Id" />
           </Key>
-          <Property Name="Project_Id" Type="int" Nullable="false" />
+          <Property Name="Project_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Project_Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Start_Date" Type="datetime2" Precision="7" />
           <Property Name="End_Date" Type="datetime2" Precision="7" />
@@ -26,7 +26,7 @@
           <Key>
             <PropertyRef Name="Task_Id" />
           </Key>
-          <Property Name="Task_Id" Type="int" Nullable="false" />
+          <Property Name="Task_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Parent_Id" Type="int" />
           <Property Name="Project_Id" Type="int" Nullable="false" />
           <Property Name="Task_Name" Type="nvarchar" MaxLength="100" />
@@ -39,7 +39,7 @@
           <Key>
             <PropertyRef Name="User_Id" />
           </Key>
-          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Employee_Id" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -125,7 +125,7 @@
           <Key>
             <PropertyRef Name="Parent_Id" />
           </Key>
-          <Property Name="Parent_Id" Type="Int32" Nullable="false" />
+          <Property Name="Parent_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Parent_Task" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_ParentTask" FromRole="ParentTask" ToRole="Task" />
         </EntityType>
@@ -133,7 +133,7 @@
           <Key>
             <PropertyRef Name="Project_Id" />
           </Key>
-          <Property Name="Project_Id" Type="Int32" Nullable="false" />
+          <Property Name="Project_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Project_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Start_Date" Type="DateTime" Precision="7" />
           <Property Name="End_Date" Type="DateTime" Precision="7" />
@@ -145,7 +145,7 @@
           <Key>
             <PropertyRef Name="Task_Id" />
           </Key>
-          <Property Name="Task_Id" Type="Int32" Nullable="false" />
+          <Property Name="Task_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Parent_Id" Type="Int32" />
           <Property Name="Project_Id" Type="Int32" Nullable="false" />
           <Property Name="Task_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -161,7 +161,7 @@
           <Key>
             <PropertyRef Name="User_Id" />
           </Key>
-          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Employee_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
@@ -218,7 +218,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ProjectManagerEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ProjectManagerEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ParentTasks" EntityType="Self.ParentTask" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="Tasks" EntityType="Self.Task" />
@@ -245,7 +245,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProjectManagerModelStoreContainer" CdmEntityContainer="ProjectManagerEntities">
+        <EntityContainerMapping StorageEntityContainer="ProjectManagerModelStoreContainer" CdmEntityContainer="ProjectManagerEntities1">
           <EntitySetMapping Name="ParentTasks">
             <EntityTypeMapping TypeName="ProjectManagerModel.ParentTask">
               <MappingFragment StoreEntitySet="ParentTask">

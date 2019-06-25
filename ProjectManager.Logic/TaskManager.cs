@@ -50,6 +50,11 @@ namespace ProjectManager.Logic
         public BusinessObjects.Task SaveTask(BusinessObjects.Task task)
         {
             var entity = _mapper.Map<DataAccess.Entity.Task>(task);
+            if(task.ParentTaskId == 0 && !string.IsNullOrEmpty(task.ParentTaskName))
+            {
+                var parent = _parentTaskRepository.Create(new DataAccess.Entity.ParentTask { Parent_Task = task.ParentTaskName });
+                entity.Parent_Id = parent.Parent_Id;
+            }
             var result = task.TaskId == 0 ? _taskRepository.Create(entity) : _taskRepository.Update(entity);
             return _mapper.Map<BusinessObjects.Task>(result);
         }
