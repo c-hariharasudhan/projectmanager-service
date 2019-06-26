@@ -18,5 +18,13 @@ namespace ProjectManager.DataAccess.Repository
         {
             return Entity.Include(obj => obj.Users).Include(obj => obj.Project).Include(obj => obj.ParentTask).ToList();
         }
+
+        public new int Delete(int id)
+        {
+            var objectToDelete = Entity.Find(id);
+            objectToDelete.Status = false;
+            _dbContext.Entry(objectToDelete).State = EntityState.Modified;
+            return _dbContext.SaveChanges();
+        }
     }
 }

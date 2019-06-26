@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +34,13 @@ namespace ProjectManager.DataAccess.Repository
             return _dbContext.SaveChanges();
         }
 
+        public void Delete(Expression<Func<T, bool>> predicate)
+        {
+            var entities = Entity.Where(predicate);
+            Entity.RemoveRange(entities);
+            _dbContext.SaveChanges();
+        }
+
         public IEnumerable<T> Get()
         {
             return Entity.ToList();
@@ -49,6 +57,27 @@ namespace ProjectManager.DataAccess.Repository
             _dbContext.Entry(objectToUpdate).State = EntityState.Modified;
             _dbContext.SaveChanges();
             return objectToUpdate;
+        }
+
+        public void Update(Expression<Func<T, bool>> predicate, string propertyName, object propertyValue)
+        {
+            var user = Entity.Where(predicate).FirstOrDefault();
+            if (user != null)
+            {
+                _dbContext.Entry(user).Property(propertyName).CurrentValue = propertyValue;
+                _dbContext.Entry(user).Property(propertyName).IsModified = true;
+                _dbContext.SaveChanges();
+            }
+        }
+
+        public void UpdateAll(Expression<Func<T, bool>> predicate, string propertyName, object propertyValue)
+        {
+            Entity.Where(predicate).ToList().ForEach(entity =>
+            {
+                _dbContext.Entry(entity).Property(propertyName).CurrentValue = propertyValue;
+                _dbContext.Entry(entity).Property(propertyName).IsModified = true;
+            });
+            _dbContext.SaveChanges();
         }
     }
 }

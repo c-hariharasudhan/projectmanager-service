@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace ProjectManager.DataAccess.Repository
 {
@@ -20,6 +21,7 @@ namespace ProjectManager.DataAccess.Repository
         {
             var result = Entity.Include(obj => obj.Users).Include(obj => obj.Tasks).ToList();
             return result;
-        }        
+        }
+        
     }
 }

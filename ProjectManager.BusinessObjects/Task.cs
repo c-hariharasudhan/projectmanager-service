@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManager.BusinessObjects
 {
-    public class Task  :BaseModel
+    public class Task
     {
         public int TaskId { get; set; }
         public string  TaskName { get; set; }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace ProjectManager.DataAccess.Repository
 {
@@ -10,5 +12,10 @@ namespace ProjectManager.DataAccess.Repository
         int Delete(int id);
         IEnumerable<T> Get();
 
+        void Update(Expression<Func<T, bool>> predicate, string propertyName, object propertyValue);
+
+
+        void UpdateAll(Expression<Func<T, bool>> predicate, string propertyName, object propertyValue);
+        void Delete(Expression<Func<T, bool>> predicate);
     }
 }
