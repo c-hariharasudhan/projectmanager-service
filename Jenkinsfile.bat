@@ -1,7 +1,7 @@
  REM Path variables
- SET FolderPath=%1
- SET ResultsPath=C:\UnitTestResults
- SET CoverageHistoryPath=C:\CoverageHistory
+ SET FolderPath=%WORKSPACE%
+ SET ResultsPath=%FolderPath%\UnitTestResults
+ SET CoverageHistoryPath=%FolderPath%\CoverageHistory
  
  SET NunitPath=%FolderPath%\packages\NUnit.ConsoleRunner.3.10.0\tools
  SET ReportUnitPath=%FolderPath%\packages\ReportUnit.1.2.1\tools
