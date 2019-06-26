@@ -17,18 +17,18 @@ namespace ProjectManager.Logic.Mapping
                 .ForMember(bo => bo.StartDate, options => options.MapFrom(entity => entity.Start_Date))
                 .ForMember(bo => bo.EndDate, options => options.MapFrom(entity => entity.End_Date))
                 .ForMember(bo => bo.Priority, options => options.MapFrom(entity => entity.Priority))
-                .ForMember(bo => bo.IsActive, options => options.MapFrom(entity => entity.Status))
+                .ForMember(bo => bo.Status, options => options.MapFrom(entity => entity.Status))
                 .ForMember(bo => bo.ParentId, options => options.MapFrom(entity => entity.ParentTask == null ? 0 : entity.ParentTask.Parent_Id))
                 .ForMember(bo => bo.ParentTaskName, options => options.MapFrom(entity => entity.ParentTask == null ? "" : entity.ParentTask.Parent_Task))
                 .ForMember(bo => bo.ProjectId, options => options.MapFrom(entity => entity.Project_Id))
-                .ForMember(bo => bo.User, options => options.Ignore());
+                .ForMember(bo => bo.User, options => options.MapFrom(entity => entity.Users.FirstOrDefault()));
             CreateMap<BusinessObjects.Task, DataAccess.Entity.Task>()
                 .ForMember(entity => entity.Task_Id, options => options.MapFrom(bo => bo.TaskId))
                 .ForMember(entity => entity.Task_Name, options => options.MapFrom(bo => bo.TaskName))
                 .ForMember(entity => entity.Start_Date, options => options.MapFrom(bo => bo.StartDate))
                 .ForMember(entity => entity.End_Date, options => options.MapFrom(bo => bo.EndDate))
                 .ForMember(entity => entity.Priority, options => options.MapFrom(bo => bo.Priority))
-                .ForMember(entity => entity.Status, options => options.MapFrom(bo => bo.IsActive))
+                .ForMember(entity => entity.Status, options => options.MapFrom(bo => bo.Status))
                 .ForMember(entity => entity.Parent_Id, options => options.MapFrom(bo => bo.ParentId))
                 .ForMember(entity => entity.Project_Id, options => options.MapFrom(bo => bo.ProjectId));
 

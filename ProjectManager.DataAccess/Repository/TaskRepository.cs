@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace ProjectManager.DataAccess.Repository
 {
-    public class TaskRepository : BaseRepository<Task>
+    public class TaskRepository : BaseRepository<Task>, IRepository<Task>
     {
         private readonly DbContext _dbContext;
         public TaskRepository(IUnitOfWork unitOfWork) : base(unitOfWork)

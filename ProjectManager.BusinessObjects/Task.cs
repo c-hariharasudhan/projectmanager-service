@@ -17,6 +17,6 @@ namespace ProjectManager.BusinessObjects
         public int ParentId { get; set; }
         public string ParentTaskName { get; set; }
         public User User { get; set; }
-        public bool IsActive { get; set; }
+        public bool Status { get; set; }
     }
 }
