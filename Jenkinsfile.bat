@@ -1,5 +1,5 @@
  REM Path variables
- SET FolderPath=%WORKSPACE%
+ SET FolderPath="%WORKSPACE%"
  SET ResultsPath=%FolderPath%\UnitTestResults
  SET CoverageHistoryPath=%FolderPath%\CoverageHistory
  
